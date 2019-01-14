@@ -1,6 +1,6 @@
 //Pseudocode
 //First page displays only a start button and the name of the gam
-//Click listener on start will display the first question and start a timer from 30 seconds
+//Click listener on start will display the first question and start a timer from 15 seconds
 //Hover effect on each possible answer.
 //When an answer is clicked, it displays whether the answer was correct or not, and tells correct answer w an image
 //Interval timer freezes at ammt remaining.
@@ -13,7 +13,7 @@
 //Functions: Start which begins the game and can be tied to restart button, getQuestion() which is called at end of start but also each time a question is answered.
 $(document).ready(function() {
   //Global variables being set
-  var time = 30;
+  var time = 15;
   var correctAnswers = 0;
   var incorrectAnswers = 0;
   var unAnswered = 0;
@@ -24,10 +24,10 @@ $(document).ready(function() {
     {
       question: "In what state does the trial in the movie take place?",
       answers: {
-        1: "Georgia",
-        2: "Alabama",
-        3: "New York",
-        4: "Texas",
+        1: "A: Georgia",
+        2: "B: Alabama",
+        3: "C: New York",
+        4: "D: Texas",
         correct: "2",
         correctAnswer: "Alabama"
       }
@@ -35,10 +35,10 @@ $(document).ready(function() {
     {
       question: "What actor played Vinny?",
       answers: {
-        1: "Joe Pesci",
-        2: "Robert deNiro",
-        3: "Brad Pitt",
-        4: "Jim Belushi",
+        1: "A: Joe Pesci",
+        2: "B: Robert deNiro",
+        3: "C: Brad Pitt",
+        4: "D: Jim Belushi",
         correct: "1",
         correctAnswer: "Joe Pesci"
       }
@@ -47,10 +47,10 @@ $(document).ready(function() {
       question:
         "What animal does Vinny go hunting with the prosecuting lawyer, Jim Trotter?",
       answers: {
-        1: "Ducks",
-        2: "Rabbits",
-        3: "Deer",
-        4: "Moose",
+        1: "A: Ducks",
+        2: "B: Rabbits",
+        3: "C: Deer",
+        4: "D: Moose",
         correct: "3",
         correctAnswer: "Deer"
       }
@@ -58,10 +58,10 @@ $(document).ready(function() {
     {
       question: "What car do Bill and Stan drive before getting arrested?",
       answers: {
-        1: "'62 Chevy Impala",
-        2: "A Ferrari",
-        3: "'63 Pontiac Tempest",
-        4: "'64 Buick Skylark",
+        1: "A: '62 Chevy Impala",
+        2: "B: A Ferrari",
+        3: "C: '63 Pontiac Tempest",
+        4: "D: '64 Buick Skylark",
         correct: "4",
         correctAnswer: "'64 Buick Skylark"
       }
@@ -70,10 +70,10 @@ $(document).ready(function() {
       question:
         "When Vinny kicks the shit out of the guy at the bar, how much does the guy owe Mona Lisa?",
       answers: {
-        1: "$50",
-        2: "$200",
-        3: "$100",
-        4: "$20",
+        1: "A: $50",
+        2: "B: $200",
+        3: "C: $100",
+        4: "D: $20",
         correct: "2",
         correctAnswer: "$200"
       }
@@ -81,10 +81,10 @@ $(document).ready(function() {
     {
       question: "How long does it take to cook grits?",
       answers: {
-        1: "5 minutes",
-        2: "20 minutes",
-        3: "1 hour",
-        4: "15 minutes",
+        1: "A: 5 minutes",
+        2: "B: 20 minutes",
+        3: "C: 1 hour",
+        4: "D: 15 minutes",
         correct: "2",
         correctAnswer: "20 minutes"
       }
@@ -92,10 +92,10 @@ $(document).ready(function() {
     {
       question: "How many times did Vinny take the bar before he passed?",
       answers: {
-        1: "1 time, guy is a genius!",
-        2: "3 times",
-        3: "2 times",
-        4: "6 times",
+        1: "A: 1 time, guy is a genius!",
+        2: "B: 3 times",
+        3: "C: 2 times",
+        4: "D: 6 times",
         correct: "4",
         correctAnswer: "6 times"
       }
@@ -103,10 +103,10 @@ $(document).ready(function() {
     {
       question: "What piece of evidence proves Stan and Bill didn't do it?",
       answers: {
-        1: "DNA",
-        2: "Tire tracks",
-        3: "Finger prints",
-        4: "Video of the crime",
+        1: "A: DNA",
+        2: "B: Tire tracks",
+        3: "C: Finger prints",
+        4: "D: Video of the crime",
         correct: "2",
         correctAnswer: "Tire tracks"
       }
@@ -114,10 +114,10 @@ $(document).ready(function() {
     {
       question: "How many times has Lucas seen My Cousin Vinny?",
       answers: {
-        1: "5 times",
-        2: "57 times",
-        3: "22 times",
-        4: "74 times",
+        1: "A: 5 times",
+        2: "B: 57 times",
+        3: "C: 22 times",
+        4: "D: 74 times",
         correct: "2",
         correctAnswer: "57 times"
       }
@@ -125,8 +125,18 @@ $(document).ready(function() {
   ];
 
   function start() {
+    var audio = new Audio('song.mp3');
+    audio.play();
+    currentQuestion = 0;
+    correctAnswers = 0;
+    incorrectAnswers = 0;
+    $("#restart").css("visibility", "hidden");
+    $("#incorrect-answers").html("");
+    $("#correct-answers").html("");
+    $("#unanswered").html("");
+    $("#end-desc").text("");
     $("#start-btn").css("display", "none");
-    $("#timer").text("Time remaining: " + "30");
+    $("#timer").text("Time remaining: " + "15");
     intervalId = setInterval(decrease, 1000);
     $("#question").text(questions[currentQuestion].question);
     for (var i = 1; i < 5; i++) {
@@ -189,10 +199,10 @@ $(document).ready(function() {
     );
     //Move to next question, at a delay of 5 seconds
     if (currentQuestion < 8) {
-      setTimeout(nextQuestion, 2000);
+      setTimeout(nextQuestion, 4000);
     } else {
       //End game logic when all questions have been answered and responses shown
-      setTimeout(gameOver, 2000);
+      setTimeout(gameOver, 4000);
     }
   }
 
@@ -202,8 +212,8 @@ $(document).ready(function() {
     $("#correct-ans").text("");
     currentQuestion++;
     console.log("current question number is " + currentQuestion);
-    $("#timer").text("Time remaining: 30");
-    time = 30;
+    $("#timer").text("Time remaining: 15");
+    time = 15;
     intervalId = setInterval(decrease, 1000);
     $("#question").text(questions[currentQuestion].question);
     for (var i = 1; i < 5; i++) {
@@ -218,18 +228,28 @@ $(document).ready(function() {
     $("#correct-ans").text("");
     $("#end-desc").text("You two youts finished. Heres how ya did.");
     $("#correct-answers").html(
-      "You answered <b>" + correctAnswers + "</b> correctly!"
+      "You answered <b>" +
+        Math.floor((correctAnswers / 9) * 100) +
+        "%</b> correctly!"
     );
     $("#incorrect-answers").html(
-      "You answered <b>" + incorrectAnswers + "</b> incorrectly."
+      "You answered <b>" +
+        Math.floor((incorrectAnswers / 9) * 100) +
+        "%</b> incorrectly."
     );
-    if (unAnswered > 0){
-    $("#unanswered").html(
-      "You didn't answer <b>" + unAnswered + "</b> questions."
-    )};
+    if (unAnswered > 0) {
+      $("#unanswered").html(
+        "You didn't answer <b>" +
+          Math.floor((unAnswered / 9) * 100) +
+          "%</b> questions."
+      );
+    }
+    $("#restart").css("visibility", "visible");
+    $("#restart").css("margin-top", "0");
   }
 
   //Click listeners
   $("#start-btn").click(start);
   $(".answer").click(makeGuess);
+  $("#restart").click(start);
 });
