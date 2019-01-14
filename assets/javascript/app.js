@@ -16,6 +16,7 @@ $(document).ready(function() {
   var time = 30;
   var correctAnswers = 0;
   var incorrectAnswers = 0;
+  var unAnswered = 0;
   var currentQuestion = 0;
   var wasCorrect = false;
   //Setting up questions and answers
@@ -43,7 +44,8 @@ $(document).ready(function() {
       }
     },
     {
-      question: "What animal does Vinny go hunting with the prosecuting lawyer, Jim Trotter?",
+      question:
+        "What animal does Vinny go hunting with the prosecuting lawyer, Jim Trotter?",
       answers: {
         1: "Ducks",
         2: "Rabbits",
@@ -65,7 +67,8 @@ $(document).ready(function() {
       }
     },
     {
-      question: "When Vinny kicks the shit out of the guy at the bar, how much does the guy owe Mona Lisa?",
+      question:
+        "When Vinny kicks the shit out of the guy at the bar, how much does the guy owe Mona Lisa?",
       answers: {
         1: "$50",
         2: "$200",
@@ -93,28 +96,32 @@ $(document).ready(function() {
         2: "3 times",
         3: "2 times",
         4: "6 times",
-        correctAnswer: "4"
+        correct: "4",
+        correctAnswer: "6 times"
       }
-    }, 
+    },
     {
-        question: "What piece of evidence proves Stan and Bill didn't do it?",
-        answers: {
-          1: "DNA",
-          2: "Tire tracks",
-          3: "Finger prints",
-          4: "Video of the crime",
-          correctAnswer: "2"
-        }
-      }, {
-        question: "How many times has Lucas seen My Cousin Vinny?",
-        answers: {
-          1: "5 times",
-          2: "57 times",
-          3: "22 times",
-          4: "74 times",
-          correctAnswer: "2"
-        }
+      question: "What piece of evidence proves Stan and Bill didn't do it?",
+      answers: {
+        1: "DNA",
+        2: "Tire tracks",
+        3: "Finger prints",
+        4: "Video of the crime",
+        correct: "2",
+        correctAnswer: "Tire tracks"
       }
+    },
+    {
+      question: "How many times has Lucas seen My Cousin Vinny?",
+      answers: {
+        1: "5 times",
+        2: "57 times",
+        3: "22 times",
+        4: "74 times",
+        correct: "2",
+        correctAnswer: "57 times"
+      }
+    }
   ];
 
   function start() {
@@ -129,7 +136,7 @@ $(document).ready(function() {
 
   function decrease() {
     if (time === 1) {
-      incorrectAnswers++;
+      unAnswered++;
       wasCorrect = false;
       console.log(
         "No answer selected, incorrece answers increases and is now " +
@@ -174,8 +181,6 @@ $(document).ready(function() {
           questions[currentQuestion].answers.correctAnswer
       );
     }
-
-    //add image here
     console.log(currentQuestion);
     $("#answer-layout").append(
       "<img class='result-img' src='assets/images/img" +
@@ -183,7 +188,12 @@ $(document).ready(function() {
         ".gif'>"
     );
     //Move to next question, at a delay of 5 seconds
-    setTimeout(nextQuestion, 2000);
+    if (currentQuestion < 8) {
+      setTimeout(nextQuestion, 2000);
+    } else {
+      //End game logic when all questions have been answered and responses shown
+      setTimeout(gameOver, 2000);
+    }
   }
 
   function nextQuestion() {
@@ -202,6 +212,22 @@ $(document).ready(function() {
   }
 
   //Add Game Over logic
+  function gameOver() {
+    $(".result-img").remove();
+    $("#y-n").text("");
+    $("#correct-ans").text("");
+    $("#end-desc").text("You two youts finished. Heres how ya did.");
+    $("#correct-answers").html(
+      "You answered <b>" + correctAnswers + "</b> correctly!"
+    );
+    $("#incorrect-answers").html(
+      "You answered <b>" + incorrectAnswers + "</b> incorrectly."
+    );
+    if (unAnswered > 0){
+    $("#unanswered").html(
+      "You didn't answer <b>" + unAnswered + "</b> questions."
+    )};
+  }
 
   //Click listeners
   $("#start-btn").click(start);

@@ -13,9 +13,13 @@
     font-weight: bold;
 }
 
-h2, h3, h4 {
+h2, h3, h4, p {
     color:white;
     font-family: 'Libre Baskerville', serif;
+}
+
+p {
+    font-size:16px;
 }
 
 ul {
@@ -51,11 +55,27 @@ ul > li:hover {
     color:white;
 }
 
-#start-btn {
+.my-buttons {
     background-color: white;
     border: 3px solid black;
     font-weight: bold;
     padding: 10px 20px 10px 20px;
     margin-top: 158px;
     visibility:visible;
+}
+
+#question{
+    margin-top: 30px;
+}
+
+#correct-answers {
+    margin-top: 50px;
+}
+
+#end-desc{
+    margin-top: 69px;
+}
+
+#restart {
+    visibility:hidden;
 }
