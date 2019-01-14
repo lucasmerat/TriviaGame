@@ -93,7 +93,7 @@ $(document).ready(function() {
         2: "3 times",
         3: "2 times",
         4: "6 times",
-        correct: "4"
+        correctAnswer: "4"
       }
     }, 
     {
@@ -103,7 +103,7 @@ $(document).ready(function() {
           2: "Tire tracks",
           3: "Finger prints",
           4: "Video of the crime",
-          correct: "2"
+          correctAnswer: "2"
         }
       }, {
         question: "How many times has Lucas seen My Cousin Vinny?",
@@ -112,7 +112,7 @@ $(document).ready(function() {
           2: "57 times",
           3: "22 times",
           4: "74 times",
-          correct: "2"
+          correctAnswer: "2"
         }
       }
   ];
