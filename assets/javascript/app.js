@@ -127,29 +127,33 @@ $(document).ready(function() {
   function start() {
     var audio = new Audio('song.mp3');
     audio.play();
+    //Reset variables for when game is restarted
     currentQuestion = 0;
     correctAnswers = 0;
     incorrectAnswers = 0;
+    //Hide elements for when game is restarted
     $("#restart").css("visibility", "hidden");
     $("#incorrect-answers").html("");
     $("#correct-answers").html("");
     $("#unanswered").html("");
     $("#end-desc").text("");
     $("#start-btn").css("display", "none");
-    $("#timer").text("Time remaining: " + "15");
+    $("#timer").text("Time remaining: " + "15"); //Initialize timer at 15 seconds
+    //Setting countdown
     intervalId = setInterval(decrease, 1000);
+    //Displaying text of question and possible answers
     $("#question").text(questions[currentQuestion].question);
     for (var i = 1; i < 5; i++) {
       $(".a" + i).text(questions[currentQuestion].answers[i]);
     }
   }
-
+//Function to decrease countdown
   function decrease() {
-    if (time === 1) {
+    if (time === 1) { //Conditional for when clock runs out, add 1 to unanswered question var
       unAnswered++;
       wasCorrect = false;
       console.log(
-        "No answer selected, incorrece answers increases and is now " +
+        "No answer selected, incorrect answers increases and is now " +
           incorrectAnswers
       );
       displayAnswer();
@@ -159,6 +163,7 @@ $(document).ready(function() {
   }
 
   function makeGuess() {
+      //If what is clicked has a key that is the same as the key of the correct answer in object, do correct answer logic
     if ($(this).attr("key") === questions[currentQuestion].answers.correct) {
       console.log("correct answer");
       wasCorrect = true;
@@ -175,10 +180,11 @@ $(document).ready(function() {
     }
     console.log("You have guessed " + correctAnswers + " question correctly");
     console.log("You have guessed " + incorrectAnswers + " incorrectly.");
-    displayAnswer();
+    displayAnswer(); //Run function to display the answer
   }
 
   function displayAnswer() {
+    //Clear interval and question and answer text to display answer content
     clearInterval(intervalId);
     $("#question").text("");
     $(".answer").text("");
@@ -188,7 +194,7 @@ $(document).ready(function() {
       $("#y-n").text("Nuh, uh.");
       $("#correct-ans").text(
         "Da correct answer was, " +
-          questions[currentQuestion].answers.correctAnswer
+          questions[currentQuestion].answers.correctAnswer //Pulls in correct answer from questions object
       );
     }
     console.log(currentQuestion);
@@ -197,7 +203,7 @@ $(document).ready(function() {
         currentQuestion +
         ".gif'>"
     );
-    //Move to next question, at a delay of 5 seconds
+    //Move to next question, at a delay of 4 seconds
     if (currentQuestion < 8) {
       setTimeout(nextQuestion, 4000);
     } else {
@@ -207,10 +213,11 @@ $(document).ready(function() {
   }
 
   function nextQuestion() {
+    //Resets all text from display answer function
     $(".result-img").remove();
     $("#y-n").text("");
     $("#correct-ans").text("");
-    currentQuestion++;
+    currentQuestion++; //Increase the value of current question to move program forward
     console.log("current question number is " + currentQuestion);
     $("#timer").text("Time remaining: 15");
     time = 15;
@@ -223,9 +230,11 @@ $(document).ready(function() {
 
   //Add Game Over logic
   function gameOver() {
+    //Remove display answer content
     $(".result-img").remove();
     $("#y-n").text("");
     $("#correct-ans").text("");
+    //Add text for end game with percent correct, incorrect and not answered
     $("#end-desc").text("You two youts finished. Heres how ya did.");
     $("#correct-answers").html(
       "You answered <b>" +
@@ -245,7 +254,7 @@ $(document).ready(function() {
       );
     }
     $("#restart").css("visibility", "visible");
-    $("#restart").css("margin-top", "0");
+    $("#restart").css("margin-top", "0"); //Fix positioning of restart button
   }
 
   //Click listeners
