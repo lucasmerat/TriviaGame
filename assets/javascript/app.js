@@ -104,8 +104,10 @@ $(document).ready(function() {
   }
 
   function decrease() {
-    if (time === 0){
+    if (time === 1){
         incorrectAnswers++;
+        wasCorrect = false;
+        console.log('No answer selected, incorrece answers increases and is now ' + incorrectAnswers);
         displayAnswer();
     }
     time--;
@@ -141,13 +143,15 @@ $(document).ready(function() {
 
     //add image here
     console.log(currentQuestion)
-    $('#answer-layout').append("<img src='assets/images/img" + currentQuestion + ".jpg'>")
+    $('#answer-layout').append("<img class='result-img' src='assets/images/img" + currentQuestion + ".jpg'>")
     //Move to next question, at a delay of 5 seconds
-    setTimeout(nextQuestion,5000);
+    setTimeout(nextQuestion,4000);
   }
 
   function nextQuestion(){
-    $('#answer-layout').text('');
+    $('.result-img').remove();
+    $('#y-n').text('');
+    $('#correct-ans').text('');
     currentQuestion++;
     console.log('current question number is ' + currentQuestion)
     $("#timer").text("Time remaining: 30");
@@ -158,6 +162,8 @@ $(document).ready(function() {
         $('.a'+ i).text(questions[currentQuestion].answers[i]);
     }
   }
+
+  //Add Game Over logic 
   
 
   //Click listeners
