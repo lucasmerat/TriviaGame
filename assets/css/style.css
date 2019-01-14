@@ -1,0 +1,58 @@
+#overlay {
+    background-color:#1918185e;
+    width: 800px;
+    height: 500px;
+    z-index:2;
+}
+
+#title {
+    color:white;
+    font-family: 'Libre Baskerville', serif;
+    padding-top: 26px;
+    text-shadow:-4px 2px #00000E;
+    font-weight: bold;
+}
+
+h2, h3, h4 {
+    color:white;
+    font-family: 'Libre Baskerville', serif;
+}
+
+ul {
+    color:white;
+    list-style-type: none;
+    font-family: 'Libre Baskerville', serif;
+}
+
+#answer-layout > img {
+    height:250px;
+    width:250px;
+}
+
+ul > li:hover {
+    color:gold;
+}
+
+
+#game-content {
+    width:800px;
+    height:500px;
+    margin:100px;
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    text-align: center;
+    z-index:1;
+}
+
+#timer {
+    color:white;
+}
+
+#start-btn {
+    background-color: white;
+    border: 3px solid black;
+    font-weight: bold;
+    padding: 10px 20px 10px 20px;
+    margin-top: 158px;
+    visibility:visible;
+}
