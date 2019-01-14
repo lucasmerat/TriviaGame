@@ -12,83 +12,107 @@
 //Objects: questions with correct and incorrect answers
 //Functions: Start which begins the game and can be tied to restart button, getQuestion() which is called at end of start but also each time a question is answered.
 $(document).ready(function() {
-    //Global variables being set
+  //Global variables being set
   var time = 30;
   var correctAnswers = 0;
   var incorrectAnswers = 0;
   var currentQuestion = 0;
   var wasCorrect = false;
-    //Setting up questions and answers
+  //Setting up questions and answers
   var questions = [
     {
-      question: "Who is vinny",
+      question: "In what state does the trial in the movie take place?",
       answers: {
-        1: "wrong,a",
-        2: "correct,b",
-        3: "wrong,c",
-        4: "wrong,d",
+        1: "Georgia",
+        2: "Alabama",
+        3: "New York",
+        4: "Texas",
         correct: "2",
-        correctAnswer: "correct,b"
+        correctAnswer: "Alabama"
       }
     },
     {
-      question: "Who played",
+      question: "What actor played Vinny?",
       answers: {
-        1: "correct,a",
-        2: "wrong,b",
-        3: "wrong,c",
-        4: "wrong,d",
+        1: "Joe Pesci",
+        2: "Robert deNiro",
+        3: "Brad Pitt",
+        4: "Jim Belushi",
         correct: "1",
-        correctAnswer: "correct,a"
+        correctAnswer: "Joe Pesci"
       }
-    }, {
-        question: "I am",
+    },
+    {
+      question: "What animal does Vinny go hunting with the prosecuting lawyer, Jim Trotter?",
+      answers: {
+        1: "Ducks",
+        2: "Rabbits",
+        3: "Deer",
+        4: "Moose",
+        correct: "3",
+        correctAnswer: "Deer"
+      }
+    },
+    {
+      question: "What car do Bill and Stan drive before getting arrested?",
+      answers: {
+        1: "'62 Chevy Impala",
+        2: "A Ferrari",
+        3: "'63 Pontiac Tempest",
+        4: "'64 Buick Skylark",
+        correct: "4",
+        correctAnswer: "'64 Buick Skylark"
+      }
+    },
+    {
+      question: "When Vinny kicks the shit out of the guy at the bar, how much does the guy owe Mona Lisa?",
+      answers: {
+        1: "$50",
+        2: "$200",
+        3: "$100",
+        4: "$20",
+        correct: "2",
+        correctAnswer: "$200"
+      }
+    },
+    {
+      question: "How long does it take to cook grits?",
+      answers: {
+        1: "5 minutes",
+        2: "20 minutes",
+        3: "1 hour",
+        4: "15 minutes",
+        correct: "2",
+        correctAnswer: "20 minutes"
+      }
+    },
+    {
+      question: "How many times did Vinny take the bar before he passed?",
+      answers: {
+        1: "1 time, guy is a genius!",
+        2: "3 times",
+        3: "2 times",
+        4: "6 times",
+        correct: "4"
+      }
+    }, 
+    {
+        question: "What piece of evidence proves Stan and Bill didn't do it?",
         answers: {
-          1: "correct,a",
-          2: "wrong,b",
-          3: "wrong,c",
-          4: "wrong,d",
-          correct: "1",
-          correctAnswer: "correct,a"
+          1: "DNA",
+          2: "Tire tracks",
+          3: "Finger prints",
+          4: "Video of the crime",
+          correct: "2"
         }
       }, {
-        question: "Yep",
+        question: "How many times has Lucas seen My Cousin Vinny?",
         answers: {
-          1: "wrong,a",
-          2: "wrong,b",
-          3: "wrong,c",
-          4: "correct,d",
-          correct: "4",
-          correctAnswer: "correct,d"
-        }
-      }, {
-        question: "Another",
-        answers: {
-          1: "wrong,a",
-          2: "correct,b",
-          3: "wrong,c",
-          4: "wrong,d",
-          correct: "2",
-          correctAnswer: "correct,b"
-        }
-      }, {
-        question: "Wow",
-        answers: {
-          1: "wrong,a",
-          2: "correct,b",
-          3: "wrong,c",
-          4: "wrong,d",
-          correct: "2",
-          correctAnswer: "correct,b"
-        }
-      }, {
-        question: "YEHAWWW",
-        answers: {
-          1: "wrong,a",
-          2: "wrong,b",
-          3: "wrong,c",
-          4: "correct,d",
-          correct: "4"
+          1: "5 times",
+          2: "57 times",
+          3: "22 times",
+          4: "74 times",
+          correct: "2"
         }
       }
   ];
@@ -97,76 +121,89 @@ $(document).ready(function() {
     $("#start-btn").css("display", "none");
     $("#timer").text("Time remaining: " + "30");
     intervalId = setInterval(decrease, 1000);
-    $('#question').text(questions[currentQuestion].question);
-    for(var i = 1;i<5;i++){
-        $('.a'+ i).text(questions[currentQuestion].answers[i]);
+    $("#question").text(questions[currentQuestion].question);
+    for (var i = 1; i < 5; i++) {
+      $(".a" + i).text(questions[currentQuestion].answers[i]);
     }
   }
 
   function decrease() {
-    if (time === 1){
-        incorrectAnswers++;
-        wasCorrect = false;
-        console.log('No answer selected, incorrece answers increases and is now ' + incorrectAnswers);
-        displayAnswer();
+    if (time === 1) {
+      incorrectAnswers++;
+      wasCorrect = false;
+      console.log(
+        "No answer selected, incorrece answers increases and is now " +
+          incorrectAnswers
+      );
+      displayAnswer();
     }
     time--;
     $("#timer").text("Time remaining: " + time);
   }
 
-  function makeGuess(){
-    if ($(this).attr('key') === questions[currentQuestion].answers.correct){
-        console.log('correct answer')
-        wasCorrect = true;
-        correctAnswers++;
+  function makeGuess() {
+    if ($(this).attr("key") === questions[currentQuestion].answers.correct) {
+      console.log("correct answer");
+      wasCorrect = true;
+      correctAnswers++;
     } else {
-        incorrectAnswers++;
-        wasCorrect = false;
-        console.log('incorrect answer')
-        console.log('incorrect answer you have guessed ' + incorrectAnswers + ' incorrectly.')
+      incorrectAnswers++;
+      wasCorrect = false;
+      console.log("incorrect answer");
+      console.log(
+        "incorrect answer you have guessed " +
+          incorrectAnswers +
+          " incorrectly."
+      );
     }
-    console.log('You have guessed ' + correctAnswers + ' question correctly')
-    console.log('You have guessed ' + incorrectAnswers + ' incorrectly.')
+    console.log("You have guessed " + correctAnswers + " question correctly");
+    console.log("You have guessed " + incorrectAnswers + " incorrectly.");
     displayAnswer();
   }
 
-  function displayAnswer(){
+  function displayAnswer() {
     clearInterval(intervalId);
-    $('#question').text('')
-    $('.answer').text('')
-    if(wasCorrect === true){
-        $('#y-n').text('yep!')
+    $("#question").text("");
+    $(".answer").text("");
+    if (wasCorrect === true) {
+      $("#y-n").text("you got it!");
     } else {
-        $('#y-n').text('nope.')
-        $('#correct-ans').text('The correct answer was, ' + questions[currentQuestion].answers.correctAnswer)
+      $("#y-n").text("Nuh, uh.");
+      $("#correct-ans").text(
+        "Da correct answer was, " +
+          questions[currentQuestion].answers.correctAnswer
+      );
     }
 
     //add image here
-    console.log(currentQuestion)
-    $('#answer-layout').append("<img class='result-img' src='assets/images/img" + currentQuestion + ".jpg'>")
+    console.log(currentQuestion);
+    $("#answer-layout").append(
+      "<img class='result-img' src='assets/images/img" +
+        currentQuestion +
+        ".gif'>"
+    );
     //Move to next question, at a delay of 5 seconds
-    setTimeout(nextQuestion,4000);
+    setTimeout(nextQuestion, 2000);
   }
 
-  function nextQuestion(){
-    $('.result-img').remove();
-    $('#y-n').text('');
-    $('#correct-ans').text('');
+  function nextQuestion() {
+    $(".result-img").remove();
+    $("#y-n").text("");
+    $("#correct-ans").text("");
     currentQuestion++;
-    console.log('current question number is ' + currentQuestion)
+    console.log("current question number is " + currentQuestion);
     $("#timer").text("Time remaining: 30");
     time = 30;
     intervalId = setInterval(decrease, 1000);
-    $('#question').text(questions[currentQuestion].question);
-    for(var i = 1;i<5;i++){
-        $('.a'+ i).text(questions[currentQuestion].answers[i]);
+    $("#question").text(questions[currentQuestion].question);
+    for (var i = 1; i < 5; i++) {
+      $(".a" + i).text(questions[currentQuestion].answers[i]);
     }
   }
 
-  //Add Game Over logic 
-  
+  //Add Game Over logic
 
   //Click listeners
   $("#start-btn").click(start);
-  $('.answer').click(makeGuess);
+  $(".answer").click(makeGuess);
 });

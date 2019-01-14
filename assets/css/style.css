@@ -22,11 +22,13 @@ ul {
     color:white;
     list-style-type: none;
     font-family: 'Libre Baskerville', serif;
+    width:50%;
+    margin: 0 auto;
 }
 
 #answer-layout > img {
     height:250px;
-    width:250px;
+    width:370px;
 }
 
 ul > li:hover {
