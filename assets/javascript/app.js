@@ -110,17 +110,19 @@ $(document).ready(function() {
         correct: "2",
         correctAnswer: "Tire tracks"
       }
-    },{
-        question: "When Vinny gives a fake when meeting name Judge Haller for the first time, what name does he give?",
-        answers: {
-          1: "Jerry Callo",
-          2: "Vincent Vito",
-          3: "Jerry Gallo",
-          4: "Jimmy Gambini",
-          correct: "3",
-          correctAnswer: "Jerry Gallo"
-        }
-      },
+    },
+    {
+      question:
+        "When Vinny gives a fake when meeting name Judge Haller for the first time, what name does he give?",
+      answers: {
+        1: "Jerry Callo",
+        2: "Vincent Vito",
+        3: "Jerry Gallo",
+        4: "Jimmy Gambini",
+        correct: "3",
+        correctAnswer: "Jerry Gallo"
+      }
+    },
     {
       question: "How many times has Lucas seen My Cousin Vinny?",
       answers: {
@@ -153,7 +155,7 @@ $(document).ready(function() {
     //Setting countdown
     intervalId = setInterval(decrease, 1000);
     //Displaying text of question and possible answers
-    $('#question-layout').css('display','block')
+    $("#question-layout").css("display", "block");
     $("#question").text(questions[currentQuestion].question);
     for (var i = 1; i < 5; i++) {
       $(".a" + i).text(questions[currentQuestion].answers[i]);
@@ -193,15 +195,16 @@ $(document).ready(function() {
     }
     console.log("You have guessed " + correctAnswers + " question correctly");
     console.log("You have guessed " + incorrectAnswers + " incorrectly.");
-    displayAnswer(); 
+    displayAnswer();
   }
 
   function displayAnswer() {
     //Clear interval and question and answer text to display answer content
     clearInterval(intervalId);
-    $('#question-layout').css('display','none')
+    $("#question-layout").css("display", "none");
     $("#question").text("");
     $(".answer").text("");
+    //Displaying incorrect or correct answer body based on result of guess
     if (wasCorrect === true) {
       $("#y-n").text("you got it!");
     } else {
@@ -231,12 +234,12 @@ $(document).ready(function() {
     $(".result-img").remove();
     $("#y-n").text("");
     $("#correct-ans").text("");
-    currentQuestion++; //Increase the value of current question to move program forward
+    currentQuestion++;//Increase question variable by one, moving to next question in object
     console.log("current question number is " + currentQuestion);
     $("#timer").text("Time remaining: 15");
-    time = 15;
+    time = 15; 
     intervalId = setInterval(decrease, 1000);
-    $('#question-layout').css('display','block')
+    $("#question-layout").css("display", "block");
     $("#question").text(questions[currentQuestion].question);
     for (var i = 1; i < 5; i++) {
       $(".a" + i).text(questions[currentQuestion].answers[i]);

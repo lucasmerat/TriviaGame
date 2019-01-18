@@ -1,119 +1,122 @@
 #overlay {
-    background-color:#1918185e;
-    width: 100%;
-    height: 800px;
-    padding-bottom: 350px;
-    z-index:2;
+  background-color: #1918185e;
+  width: 100%;
+  height: 800px;
+  padding-bottom: 350px;
+  z-index: 2;
 }
 
 #game-content {
-    background-image: url('../images/bg.jpg');
-    background-size: cover;
-    background-size: contain;
-    text-align: center;
-    z-index:1;
+  background-image: url("../images/bg.jpg");
+  background-size: cover;
+  background-size: contain;
+  text-align: center;
+  z-index: 1;
 }
 
 #title {
-    margin-top:0px;
-    color:white;
-    font-family: 'Libre Baskerville', serif;
-    padding-top: 26px;
-    text-shadow:-4px 2px #00000E;
-    font-weight: bold;
+  margin-top: 0px;
+  color: white;
+  font-family: "Libre Baskerville", serif;
+  padding-top: 26px;
+  text-shadow: -4px 2px #00000e;
+  font-weight: bold;
 }
 
-h2, h3, h4, p {
-    color:white;
-    font-family: 'Libre Baskerville', serif;
+h2,
+h3,
+h4,
+p {
+  color: white;
+  font-family: "Libre Baskerville", serif;
 }
 
-h2{
-    margin:0px;
+h2 {
+  margin: 0px;
 }
 
-h3{
-    margin:20px 0px 20px 0px;
+h3 {
+  margin: 20px 0px 20px 0px;
 }
 
-#timer{
-    margin: 50px 0px 15px 0px;
-    color:white;
+#timer {
+  margin: 50px 0px 15px 0px;
+  color: white;
 }
 
 p {
-    font-size:16px;
+  font-size: 16px;
 }
 
 ul {
-    color:white;
-    list-style-type: none;
-    font-family: 'Libre Baskerville', serif;
-    margin: 0 auto;
-    padding-left: 0;
+  color: white;
+  list-style-type: none;
+  font-family: "Libre Baskerville", serif;
+  margin: 0 auto;
+  padding-left: 0;
 }
 
 #answer-layout > img {
-    height:250px;
-    width:345px;
+  height: 250px;
+  width: 345px;
 }
 
 .answer {
-    width: 250px;
-    height:30px;
-    margin: 0 auto;
-    margin-bottom:5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #27140d;
-    border:1px solid white;
-    border-radius:3px;
+  width: 250px;
+  height: 30px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #27140d;
+  border: 1px solid white;
+  border-radius: 3px;
 }
 
 .answer:hover {
-    background-color:#ad884499;
-    cursor: pointer;
+  background-color: #ad884499;
+  cursor: pointer;
 }
 
 .my-buttons {
-    background-color: white;
-    border: 3px solid black;
-    font-weight: bold;
-    padding: 10px 20px 10px 20px;
-    margin-top: 158px;
-    visibility:visible;
+  background-color: white;
+  border: 3px solid black;
+  font-weight: bold;
+  padding: 10px 20px 10px 20px;
+  margin-top: 158px;
+  visibility: visible;
 }
 
-#question-layout{
-    display:none;
-    background-color: #50372f;
-    margin: 0 auto;
-    margin-top: 50px;
-    padding: 15px 0px 15px 0px;
-    border: 3px solid white;
-    border-radius:9px;
-    width:60%;
+#question-layout {
+  display: none;
+  background-color: #50372f;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 15px 0px 15px 0px;
+  border: 3px solid white;
+  border-radius: 9px;
+  width: 60%;
 }
 
-#question{
-    margin:15px 10px 15px 10px
+#question {
+  margin: 15px 10px 15px 10px;
 }
 
 #correct-answers {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
-#end-desc{
-    margin-top: 69px;
+#end-desc {
+  margin-top: 69px;
 }
 
 #restart {
-    visibility:hidden;
+  visibility: hidden;
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    .answer{
-        width:75%;
-    }
-    }
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .answer {
+    width: 75%;
+  }
+}
