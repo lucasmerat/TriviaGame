@@ -272,7 +272,7 @@ $(document).ready(function() {
       );
     }
     $("#restart").css("visibility", "visible");
-    $("#restart").css("margin-top", "0"); //Fix positioning of restart button
+    $("#restart").css("margin-top", "0"); 
   }
 
   //Click listeners
