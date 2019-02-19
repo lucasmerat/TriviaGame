@@ -1,16 +1,3 @@
-//Pseudocode
-//First page displays only a start button and the name of the gam
-//Click listener on start will display the first question and start a timer from 15 seconds
-//Hover effect on each possible answer.
-//When an answer is clicked, it displays whether the answer was correct or not, and tells correct answer w an image
-//Interval timer freezes at ammt remaining.
-//setTimeoutDelayed start of next question (6 secs?). W no user input.
-//If the time remaining === 0, display that they are out of time, w correct answer and an image
-//Moves to next question. After each answer, once at the end, it freezes the timer, displays the number of correct/incorrect answers
-//Displays start over button. On click of start over button, no page reload, and starts from the top.
-//Variables: numCorrect, numIncorrect, Interval for timer
-//Objects: questions with correct and incorrect answers
-//Functions: Start which begins the game and can be tied to restart button, getQuestion() which is called at end of start but also each time a question is answered.
 $(document).ready(function() {
   //Global variables being set
   var time = 15;
@@ -246,7 +233,6 @@ $(document).ready(function() {
     }
   }
 
-  //Add Game Over logic
   function gameOver() {
     //Remove display answer content
     $(".result-img").remove();
@@ -268,7 +254,7 @@ $(document).ready(function() {
       $("#unanswered").html(
         "You didn't answer <b>" +
           Math.floor((unAnswered / 10) * 100) +
-          "%</b> of the questions."
+          "%</b> of the questions."asdfasdf
       );
     }
     $("#restart").css("visibility", "visible");
