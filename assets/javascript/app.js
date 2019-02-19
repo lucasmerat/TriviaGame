@@ -254,7 +254,7 @@ $(document).ready(function() {
       $("#unanswered").html(
         "You didn't answer <b>" +
           Math.floor((unAnswered / 10) * 100) +
-          "%</b> of the questions."asdfasdf
+          "%</b> of the questions."
       );
     }
     $("#restart").css("visibility", "visible");
