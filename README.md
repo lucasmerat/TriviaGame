@@ -1,4 +1,4 @@
-# GiphyShare
+# My Cousin Vinny Trivia
 
 #### A timed trivia game to test your knowledge of a classic movie.
 
